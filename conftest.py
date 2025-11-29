@@ -60,11 +60,8 @@ def datos_ordenes():
     return cargar_datos_ordenes()
 
 
-def pytest_terminal_summary(terminalreporter, exitstatus, config):  # pylint: disable=unused-argument
-    """
-    Genera un resumen en texto plano con totales, porcentajes y detalle de casos en reports/resumen.txt.
-    """
-    total = terminalreporter._numcollected  # type: ignore[attr-defined]
+def pytest_terminal_summary(terminalreporter, exitstatus, config):
+    total = terminalreporter._numcollected
     fallidos = len(terminalreporter.stats.get("failed", []))
     pasados = len(terminalreporter.stats.get("passed", []))
     omitidos = len(terminalreporter.stats.get("skipped", []))
@@ -76,7 +73,6 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):  # pylint: di
     pct_ok = round((pasados / total) * 100, 2)
     pct_fail = round((fallidos / total) * 100, 2)
 
-    # Mapea cada archivo a un nombre más legible de caso
     alias_casos = {
         "tests/test_agregar_carrito.py": "Caso 1 - Agregar al carrito",
         "tests/test_gestion_carrito.py": "Caso 2 - Gestionar carrito",
@@ -86,7 +82,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):  # pylint: di
     detalles = []
     for estado in ("passed", "failed", "error", "skipped"):
         for rep in terminalreporter.stats.get(estado, []):
-            nodo = rep.nodeid  # ejemplo: tests/test_agregar_carrito.py::test_agregar_productos_carrito[Phones]
+            nodo = rep.nodeid
             archivo = nodo.split("::")[0]
             alias = alias_casos.get(archivo, archivo)
             detalles.append(f"{alias} | {nodo} | estado: {estado.upper()}")
@@ -110,5 +106,4 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):  # pylint: di
     resumen_path = reports_dir / "resumen.txt"
     resumen_path.write_text("\n".join(resumen), encoding="utf-8")
 
-    # También imprime el path en consola para referencia
     terminalreporter.write_sep("-", f"Resumen escrito en {resumen_path}")

@@ -43,7 +43,6 @@ def test_place_order_exitoso(driver, config, fila_orden):
     titulo = modal.obtener_titulo_confirmacion()
     assert "Thank you" in titulo
     modal.aceptar_confirmacion()
-    # DemoBlaze a veces mantiene los ítems; intentamos limpiar y revalidar
     driver.get(config["base_url"])
     cart.abrir_carrito()
     try:
@@ -51,7 +50,6 @@ def test_place_order_exitoso(driver, config, fila_orden):
     except TimeoutException:
         filas_post = []
     if filas_post:
-        # eliminar todos manualmente
         for _ in filas_post:
             cart.eliminar_primer_item()
             time.sleep(1)
@@ -90,13 +88,13 @@ def test_place_order_datos_invalidos(driver, config, fila_orden):
         cvv=fila_orden.get("cvv", ""),
     )
     modal.enviar()
-    # DemoBlaze no valida de forma estricta: aceptamos ambos comportamientos.
+
     try:
         titulo = modal.obtener_titulo_confirmacion()
         modal.aceptar_confirmacion()
         assert "Thank you" in titulo, "Se mostró confirmación sin texto esperado"
     except Exception:
-        # Si no hay confirmación, consideramos que el sistema bloqueó la compra
+    
         pass
 
 

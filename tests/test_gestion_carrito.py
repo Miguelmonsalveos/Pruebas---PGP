@@ -26,7 +26,7 @@ def test_eliminar_actualiza_total(driver, config):
     cart = CartPage(driver, config["explicit_wait"])
     cart.abrir_carrito()
     filas = cart.obtener_filas()
-    # Si por alguna razón sólo hay 1, intenta agregar otro y revalidar
+   
     if len(filas) < 2:
         driver.get(config["base_url"])
         agregar_primer_producto_de("Monitors")
@@ -36,7 +36,7 @@ def test_eliminar_actualiza_total(driver, config):
     total_inicial = cart.obtener_total()
 
     cart.eliminar_primer_item()
-    time.sleep(2)  # pequeña espera por recálculo en UI
+    time.sleep(2)  
     total_final = cart.obtener_total()
     assert total_final < total_inicial, "El total no se actualizó tras eliminar"
 

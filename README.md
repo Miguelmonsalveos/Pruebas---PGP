@@ -16,7 +16,7 @@ Estructura base para 3 casos automatizados:
 1) Crear venv e instalar dependencias: `pip install -r requirements.txt` (Selenium, pytest, pyyaml).
 2) Ajustar `config/config.yaml` si es necesario (navegador/headless).
 3) Ejecutar pruebas: `pytest -v`.
-4) Con reporte HTML (opcional): `pytest -v --html=reports/reporte.html --self-contained-html`.
+
 
 ## Notas
 - Datos para Place Order vienen de `data/orders.csv`. Puedes agregar más filas sin tocar el código.

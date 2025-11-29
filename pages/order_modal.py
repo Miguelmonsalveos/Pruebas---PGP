@@ -24,7 +24,6 @@ class OrderModal:
         self.espera.until(EC.visibility_of_element_located(self.MODAL))
 
     def diligenciar_formulario(self, nombre: str = "", tarjeta: str = "", mes: str = "", años: str = "", cvv: str = "", pais: str = "", ciudad: str = ""):
-        # Llena solo los valores provistos; útil para escenarios negativos
         if nombre is not None:
             self.navegador.find_element(*self.INPUT_NOMBRE).clear()
             self.navegador.find_element(*self.INPUT_NOMBRE).send_keys(nombre)
