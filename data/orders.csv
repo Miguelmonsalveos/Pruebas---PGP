@@ -1,0 +1,6 @@
+nombre,tarjeta,mes,años,cvv,espera_exito,nota
+Miguel Monsalve,4111111111111111,12,2026,123,True,Flujo feliz
+Miguel Vazquez,abcd,05,2025,000,False,Tarjeta con letras
+Sara,4111111111111111,00,2023,123,False,Mes fuera de rango
+Adrian,4111111111111111,12,2026,,False,CVV vacío
+Alvaro,4111111111111111,12,20,123,False,Año inválido

@@ -1,0 +1,7 @@
+Total pruebas: 7
+Pasadas: 7
+Fallidas: 0
+Omitidas: 0
+Errores: 0
+Porcentaje OK: 100.0%
+Porcentaje Fallo: 0.0%

@@ -1,0 +1,6 @@
+
+base_url: "https://www.demoblaze.com"
+browser: "chrome"          
+implicit_wait: 5
+explicit_wait: 15
+headless: false
